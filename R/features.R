@@ -56,9 +56,9 @@ extract_features_ytweets <- function(x) {
   dd1 <- cbind(txt_df, b64_df[-1])
   dd2 <- cbind(dsc_df, loc_df[-1])
   dd2 <- cbind(dd2, nm_df[-1])
-  #dd <- dplyr::left_join(dd1, dd2, by = "user_id")
+  dd <- dplyr::left_join(dd1, dd2, by = "user_id")
   #dd <- dplyr::left_join(dd1, dd2, by = c("user_id"))
-  dd <- dplyr::left_join(dd1, dd2, by = c("USER_ID" = "user_id"))
+  #dd <- dplyr::left_join(dd1, dd2, by = c("USER_ID" = "user_id"))
 
   x <- x %>%
     dplyr::group_by(user_id) %>%
@@ -202,9 +202,9 @@ extract_features_ntweets <- function(x) {
   dd1 <- cbind(txt_df, b64_df[-1])
   dd2 <- cbind(dsc_df, loc_df[-1])
   dd2 <- cbind(dd2, nm_df[-1])
-  #dd <- dplyr::left_join(dd1, dd2, by = "user_id")
+  dd <- dplyr::left_join(dd1, dd2, by = "user_id")
   #dd <- dplyr::left_join(dd1, dd2, by = c("user_id"))
-  dd <- dplyr::left_join(dd1, dd2, by = c("USER_ID" = "user_id"))
+  #dd <- dplyr::left_join(dd1, dd2, by = c("USER_ID" = "user_id"))
 
   x <- x %>%
     dplyr::group_by(user_id) %>%
@@ -222,8 +222,8 @@ extract_features_ntweets <- function(x) {
       statuses_rate  = (statuses_count + 1) / (years_on_twitter + .001),
       ff_ratio = (followers_count + 1) / (friends_count + followers_count + 1)
     )
-  #dplyr::left_join(x, dd, by = "user_id")
+  dplyr::left_join(x, dd, by = "user_id")
   #dplyr::left_join(x, dd, by = c("user_id"))
-  dplyr::left_join(x, dd, by = c("USER_ID" = "user_id"))
+  #dplyr::left_join(x, dd, by = c("USER_ID" = "user_id"))
 }
 
